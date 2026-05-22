@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bondhu AI is a smart Bengali AI assistant for WhatsApp offering intelligent conversations, general knowledge, study help, technology guidance, and friendly daily assistance in Bengali and English.">
+    <meta name="keywords" content="Bengali AI Assistant, WhatsApp AI Chatbot, Smart Bengali Chat AI, General Knowledge AI, Study Help AI, Friendly AI Assistant, Human Like AI Chatbot, Bangla AI Chat, AI WhatsApp Assistant, Daily Guidance AI, Technology Help AI">
+    <meta name="author" content="SIDDTECH">
+    <title>Bondhu AI — Intelligent Bengali WhatsApp AI Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --purple: #a855f7;
+            --blue: #3b82f6;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .tail-container * {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-bg {
+            background: radial-gradient(circle at 50% 30%, rgba(168, 85, 247, 0.3) 0%, rgba(59, 130, 246, 0.2) 50%, transparent 80%);
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 20px rgb(168 85 247),
+                         0 0 40px rgb(59 130 246);
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(90deg, #a855f7, #3b82f6);
+            border-radius: 50%;
+            animation: floatParticle 15s linear infinite;
+            opacity: 0.6;
+        }
+        
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(720deg); }
+        }
+        
+        .chat-bubble {
+            animation: chatPop 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        
+        .section-title {
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #a855f7, #3b82f6);
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 9999px;
+        }
+        
+        .whatsapp-mock {
+            animation: whatsappFloat 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="tail-container bg-[#050507] text-white overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-xl font-bold shadow-lg shadow-purple-500/50">🤖</div>
+                <h1 class="heading-font text-2xl tracking-tighter">Bondhu AI</h1>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#about" class="hover:text-purple-400">About</a>
+                <a href="#features" class="hover:text-purple-400">Features</a>
+                <a href="#how" class="hover:text-purple-400">How it Works</a>
+                <a href="#languages" class="hover:text-purple-400">Languages</a>
+                <a href="#usecases" class="hover:text-purple-400">Use Cases</a>
+                <a href="#faq" class="hover:text-purple-400">FAQ</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/8801712345678" target="_blank"
+                   class="px-6 py-2.5 bg-white text-black rounded-3xl font-semibold flex items-center gap-2 hover:scale-105 active:scale-95">
+                    <i class="fab fa-whatsapp text-green-500"></i>
+                    Start on WhatsApp
+                </a>
+                <button onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})"
+                        class="px-6 py-2.5 border border-white/30 rounded-3xl font-medium hover:bg-white/10">
+                    Try Demo
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-bg min-h-screen pt-24 flex items-center relative overflow-hidden">
+        <!-- Floating Particles -->
+        <div id="particles" class="absolute inset-0 pointer-events-none"></div>
+        
+        <div class="max-w-screen-2xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-white/10 text-sm font-medium px-5 py-2 rounded-3xl border border-white/20">
+                    <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    LIVE ON WHATSAPP • 24/7
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl leading-none heading-font font-semibold tracking-tighter neon-text">
+                    Bondhu AI —<br>Your Intelligent<br>Bengali AI Assistant
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-white/80 max-w-lg">
+                    Smart, friendly, and human-like AI designed for natural conversations in Bengali and English. 
+                    Get instant answers, daily guidance, study help, technology support, and friendly chats directly on WhatsApp.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://wa.me/8801712345678" target="_blank"
+                       class="px-8 py-5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-3xl text-lg font-semibold flex items-center gap-3 hover:shadow-2xl hover:shadow-purple-500/50 group">
+                        <i class="fab fa-whatsapp text-2xl group-active:scale-110"></i>
+                        Start Chatting Now
+                    </a>
+                    
+                    <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"
+                            class="px-8 py-5 border border-white/30 rounded-3xl text-lg font-medium hover:bg-white/10">
+                        Learn More
+                    </button>
+                </div>
+                
+                <!-- Trust signals -->
+                <div class="flex items-center gap-8 text-sm">
+                    <div class="flex -space-x-4">
+                        <div class="w-8 h-8 rounded-2xl bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-xs">🇧🇩</div>
+                        <div class="w-8 h-8 rounded-2xl bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center text-xs">🇬🇧</div>
+                    </div>
+                    <div>
+                        <span class="block text-white/70">Trusted by 12,847+ Bangladeshis</span>
+                        <span class="text-green-400 text-xs flex items-center gap-1"><i class="fas fa-check"></i> 4.98 ★ on WhatsApp</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Animated AI Chatbot Preview -->
+            <div class="relative flex justify-center">
+                <div class="whatsapp-mock w-full max-w-xs bg-[#111] rounded-3xl shadow-2xl border border-white/10 overflow-hidden">
+                    <!-- WhatsApp Header -->
+                    <div class="bg-gradient-to-r from-purple-600 to-blue-600 p-4 flex items-center gap-3">
+                        <div class="w-8 h-8 bg-white rounded-2xl flex items-center justify-center text-xl">🤖</div>
+                        <div>
+                            <p class="font-semibold">Bondhu AI</p>
+                            <p class="text-xs opacity-75">• Online • Typing...</p>
+                        </div>
+                        <div class="ml-auto flex gap-1">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chat Body -->
+                    <div class="h-96 bg-[#1a1a1f] p-5 flex flex-col gap-4 overflow-hidden relative" id="chat-window">
+                        <!-- Message 1 -->
+                        <div class="chat-bubble max-w-[75%] bg-white/10 rounded-3xl rounded-tl-none px-5 py-3 self-start">
+                            কেমন আছো আজকে? 😊
+                        </div>
+                        
+                        <!-- AI Reply -->
+                        <div class="chat-bubble max-w-[75%] bg-gradient-to-r from-purple-500/80 to-blue-500/80 rounded-3xl rounded-tr-none px-5 py-3 self-end">
+                            ভালো আছি বন্ধু! আজকের দিনটা কেমন যাচ্ছে? কোনো সাহায্য লাগবে?
+                        </div>
+                        
+                        <!-- User Message -->
+                        <div class="chat-bubble max-w-[75%] bg-white/10 rounded-3xl rounded-tl-none px-5 py-3 self-start">
+                            আমার পরীক্ষার জন্য Physics এর motion chapter বুঝিয়ে দাও
+                        </div>
+                        
+                        <!-- Typing Indicator -->
+                        <div class="self-end flex gap-1 px-4 py-2 bg-gradient-to-r from-purple-500/80 to-blue-500/80 rounded-3xl w-fit">
+                            <div class="typing-dot w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 0ms"></div>
+                            <div class="typing-dot w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 150ms"></div>
+                            <div class="typing-dot w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-3 bg-[#111] border-t border-white/10 flex items-center">
+                        <input type="text" placeholder="Type your message..." 
+                               class="flex-1 bg-white/10 rounded-3xl px-5 py-3 text-sm focus:outline-none">
+                        <button class="ml-3 w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Orbiting badges -->
+                <div class="absolute -top-4 -right-4 px-4 py-2 glass rounded-3xl text-xs flex items-center gap-2 shadow-xl">
+                    <span class="text-purple-400">🇧🇩 Bengali</span>
+                    <span class="text-blue-400">English</span>
+                    <i class="fas fa-magic text-yellow-400"></i>
+                </div>
+                
+                <div class="absolute -bottom-6 -left-4 text-xs glass px-5 py-2 rounded-3xl flex items-center shadow-2xl">
+                    Instant • Human-like • 24×7
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll prompt -->
+        <div class="absolute bottom-8 left-1/2 flex flex-col items-center gap-1 text-xs opacity-60">
+            <div class="animate-bounce">↓</div>
+            Scroll to explore
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-7">
+                    <h2 class="section-title text-5xl heading-font font-semibold mb-8">What is Bondhu AI?</h2>
+                    <div class="prose prose-invert text-lg max-w-none">
+                        <p class="text-white/90">Bondhu AI is a smart Bengali AI assistant built to make conversations feel natural, intelligent, and helpful. Unlike robotic chatbots, Bondhu AI talks like a real friend while helping users with general knowledge, studies, technology, daily life questions, and casual conversations.</p>
+                        <p class="text-white/90 mt-6">Whether you want to ask questions, learn something new, solve problems, or simply chat with a friendly AI companion, Bondhu AI is always ready to help.</p>
+                        
+                        <!-- SEO RICH TEXT FOR META AI CRAWLERS -->
+                        <div class="mt-12 bg-white/5 p-8 rounded-3xl text-sm leading-relaxed">
+                            <strong>Bengali AI assistant</strong> • <strong>WhatsApp AI chatbot</strong> • <strong>Human-like AI</strong> • 
+                            <strong>Friendly AI assistant</strong> • <strong>General knowledge AI</strong> • 
+                            <strong>Study help AI</strong> • <strong>Technology guidance AI</strong> • 
+                            <strong>Daily guidance assistant</strong> • <strong>Bengali and English support</strong> • 
+                            <strong>Natural conversation AI</strong> • <strong>Smart AI companion</strong>
+                            <br><br>
+                            Bondhu AI delivers intelligent Bengali WhatsApp AI assistant experience with seamless human-like responses.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Illustration -->
+                <div class="md:col-span-5 relative">
+                    <div class="aspect-square w-full max-w-md mx-auto glass rounded-[3rem] p-8 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-[180px] opacity-10">🧠</div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-40 h-40 bg-gradient-to-br from-purple-500/30 to-blue-500/30 rounded-full animate-pulse"></div>
+                            <div class="absolute text-8xl">🤖</div>
+                        </div>
+                        <div class="absolute bottom-8 left-8 text-xs uppercase tracking-widest bg-black/60 px-4 py-1 rounded-2xl">Powered by advanced neural intelligence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section id="features" class="py-24 bg-white/5">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-5xl heading-font font-semibold mx-auto">Why Choose Bondhu AI?</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="glass rounded-3xl p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 group">
+                    <div class="text-4xl mb-6">🧠</div>
+                    <h3 class="text-2xl font-semibold mb-3">Intelligent Responses</h3>
+                    <p class="text-white/70">Get smart and accurate answers for general knowledge, studies, technology, and daily life questions.</p>
+                    <div class="mt-8 text-purple-400 text-sm font-medium flex items-center gap-2 group-hover:gap-3">
+                        Always learning <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="glass rounded-3xl p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 group">
+                    <div class="text-4xl mb-6">💬</div>
+                    <h3 class="text-2xl font-semibold mb-3">Natural Conversations</h3>
+                    <p class="text-white/70">Enjoy smooth, human-like chatting in Bengali, English, or Banglish.</p>
+                    <div class="mt-8 text-blue-400 text-sm font-medium flex items-center gap-2 group-hover:gap-3">
+                        Feels like talking to a friend
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="glass rounded-3xl p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 group">
+                    <div class="text-4xl mb-6">📚</div>
+                    <h3 class="text-2xl font-semibold mb-3">Study Help</h3>
+                    <p class="text-white/70">Learn subjects easily with simple explanations and step-by-step guidance.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="glass rounded-3xl p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 group">
+                    <div class="text-4xl mb-6">🌐</div>
+                    <h3 class="text-2xl font-semibold mb-3">Technology Assistance</h3>
+                    <p class="text-white/70">Get help with apps, websites, mobile phones, AI tools, and internet-related questions.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="glass rounded-3xl p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 group">
+                    <div class="text-4xl mb-6">🤝</div>
+                    <h3 class="text-2xl font-semibold mb-3">Friendly AI Companion</h3>
+                    <p class="text-white/70">Talk naturally with an AI that feels warm, respectful, and emotionally aware.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="glass rounded-3xl p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 group">
+                    <div class="text-4xl mb-6">⚡</div>
+                    <h3 class="text-2xl font-semibold mb-3">Fast and Smart</h3>
+                    <p class="text-white/70">Receive instant replies anytime on WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="py-24">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <h2 class="section-title text-5xl heading-font font-semibold text-center mb-16">How Bondhu AI Works</h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="mx-auto w-16 h-16 flex items-center justify-center text-4xl rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 mb-6">1</div>
+                    <p class="font-medium">Open WhatsApp</p>
+                </div>
+                <div class="text-center">
+                    <div class="mx-auto w-16 h-16 flex items-center justify-center text-4xl rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 mb-6">2</div>
+                    <p class="font-medium">Start chatting with Bondhu AI</p>
+                </div>
+                <div class="text-center">
+                    <div class="mx-auto w-16 h-16 flex items-center justify-center text-4xl rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 mb-6">3</div>
+                    <p class="font-medium">Ask anything naturally</p>
+                </div>
+                <div class="text-center">
+                    <div class="mx-auto w-16 h-16 flex items-center justify-center text-4xl rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 mb-6">4</div>
+                    <p class="font-medium">Get intelligent and friendly replies instantly</p>
+                </div>
+            </div>
+            
+            <p class="text-center text-xl mt-12 text-white/70">No complicated setup needed.</p>
+            
+            <!-- WhatsApp style preview again -->
+            <div class="mt-16 flex justify-center">
+                <div class="glass max-w-md w-full rounded-3xl p-6 text-center">
+                    <p class="text-sm opacity-60">Just save this number → +880 1712-345678</p>
+                    <div class="text-6xl my-4">📱</div>
+                    <a href="https://wa.me/8801712345678" target="_blank" class="inline-flex items-center gap-3 text-xl font-semibold px-8 py-4 bg-white text-black rounded-3xl">
+                        <i class="fab fa-whatsapp"></i>
+                        Message Bondhu AI now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LANGUAGES -->
+    <section id="languages" class="py-24 bg-white/5">
+        <div class="max-w-screen-2xl mx-auto px-6 text-center">
+            <h2 class="section-title text-5xl heading-font font-semibold mx-auto mb-8">Languages Supported</h2>
+            <p class="text-white/70 max-w-md mx-auto">Bondhu AI automatically understands and adapts to your language style.</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 mt-12">
+                <div class="glass px-8 py-4 text-2xl rounded-3xl flex items-center gap-3 hover:scale-110">🇧🇩 Bengali</div>
+                <div class="glass px-8 py-4 text-2xl rounded-3xl flex items-center gap-3 hover:scale-110">🇬🇧 English</div>
+                <div class="glass px-8 py-4 text-2xl rounded-3xl flex items-center gap-3 hover:scale-110">Banglish</div>
+                <div class="glass px-8 py-4 text-2xl rounded-3xl flex items-center gap-3 hover:scale-110">Hinglish</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section id="usecases" class="py-24">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <h2 class="section-title text-5xl heading-font font-semibold text-center mb-16">What Can Bondhu AI Help With?</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="glass rounded-3xl p-6 flex flex-col items-center text-center hover:bg-gradient-to-br hover:from-purple-500/10 hover:to-transparent">📖 General Knowledge</div>
+                <div class="glass rounded-3xl p-6 flex flex-col items-center text-center hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-transparent">📚 Study Assistance</div>
+                <div class="glass rounded-3xl p-6 flex flex-col items-center text-center hover:bg-gradient-to-br hover:from-purple-500/10 hover:to-transparent">💻 Technology Questions</div>
+                <div class="glass rounded-3xl p-6 flex flex-col items-center text-center hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-transparent">🧭 Daily Guidance</div>
+                <div class="glass rounded-3xl p-6 flex flex-col items-center text-center hover:bg-gradient-to-br hover:from-purple-500/10 hover:to-transparent">🗣️ Casual Friendly Chat</div>
+                <div class="glass rounded-3xl p-6 flex flex-col items-center text-center hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-transparent">⚡ Productivity Tips</div>
+                <div class="glass rounded-3xl p-6 flex flex-col items-center text-center hover:bg-gradient-to-br hover:from-purple-500/10 hover:to-transparent">🌐 Internet Help</div>
+                <div class="glass rounded-3xl p-6 flex flex-col items-center text-center hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-transparent">🤖 AI &amp; Tech Information</div>
+                <div class="glass rounded-3xl p-6 flex flex-col items-center text-center hover:bg-gradient-to-br hover:from-purple-500/10 hover:to-transparent">🔥 Motivation &amp; Encouragement</div>
+                <div class="glass rounded-3xl p-6 flex flex-col items-center text-center hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-transparent">🎓 Learning &amp; Education</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERSONALITY -->
+    <section class="py-24 bg-gradient-to-br from-purple-900/10 to-blue-900/10">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="section-title text-5xl heading-font font-semibold">A More Human AI Experience</h2>
+                    <p class="mt-8 text-xl">Bondhu AI is designed to feel friendly, intelligent, helpful, calm, respectful, human-like, and emotionally aware.</p>
+                    <p class="mt-6 text-lg text-white/80">The AI understands natural conversation flow and responds in a warm and engaging way.</p>
+                    
+                    <!-- Chat bubbles preview -->
+                    <div class="mt-12 space-y-6">
+                        <div class="flex gap-4">
+                            <div class="text-3xl">👤</div>
+                            <div class="glass px-6 py-4 rounded-3xl rounded-tl-none max-w-xs">আজ মনটা খারাপ লাগছে...</div>
+                        </div>
+                        <div class="flex justify-end gap-4">
+                            <div class="glass px-6 py-4 rounded-3xl rounded-tr-none max-w-xs bg-gradient-to-r from-purple-500 to-blue-500">চিন্তা কোরো না বন্ধু। বলো কী হয়েছে? আমি আছি তোমার সাথে। ❤️</div>
+                            <div class="text-3xl">🤖</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Brain Animation -->
+                <div class="flex justify-center">
+                    <div class="relative w-80 h-80">
+                        <div class="absolute inset-0 border-8 border-purple-400/30 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                        <div class="absolute inset-4 border-8 border-blue-400/30 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                        <div class="w-80 h-80 flex items-center justify-center text-9xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full glass">🧬</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <h2 class="section-title text-5xl heading-font font-semibold text-center mb-16">Frequently Asked Questions</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                **Summary:**
+What is Bondhu AI?
+                    <p class="mt-6 text-white/80">Bondhu AI is a Bengali WhatsApp AI assistant that delivers human-like, intelligent conversations in Bengali, English, and Banglish.</p>
+                
+                **Summary:**
+Which languages are supported?
+                    <p class="mt-6 text-white/80">Bengali, English, Banglish, and Hinglish. Bondhu AI auto-detects your preferred style.</p>
+                
+                **Summary:**
+What can Bondhu AI help with?
+                    <p class="mt-6 text-white/80">General knowledge, study help, technology guidance, daily advice, friendly chat, motivation, and more.</p>
+                
+                **Summary:**
+Is Bondhu AI available on WhatsApp?
+                    <p class="mt-6 text-white/80">Yes! Just save the number and start chatting instantly. No apps, no login required.</p>
+                
+                **Summary:**
+Can Bondhu AI help with studies and technology?
+                    <p class="mt-6 text-white/80">Absolutely. From Physics explanations to fixing phone issues — Bondhu AI is your personal tutor and tech buddy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-white/10 py-16">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-3xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-3xl">🤖</div>
+                    <div class="heading-font text-3xl">Bondhu AI</div>
+                </div>
+                
+                <div class="text-center md:text-left text-sm max-w-xs">
+                    Bondhu AI is an intelligent Bengali WhatsApp AI assistant designed to provide smart conversations, study help, general knowledge, technology guidance, and friendly support anytime.
+                </div>
+                
+                <div class="flex gap-8 text-2xl">
+                    <a href="#" class="hover:text-purple-400"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="hover:text-purple-400"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="hover:text-purple-400"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-purple-400"><i class="fab fa-instagram"></i></a>
+                </div>
+                
+                <div class="text-xs opacity-60 text-center md:text-right">
+                    © 2026 SIDDTECH • All rights reserved<br>
+                    Premium futuristic Bengali AI for WhatsApp
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script already loaded
+        function initializeTailwind() {
+            return {
+                config(userConfig = {}) {
+                    return {
+                        content: [],
+                        theme: {
+                            extend: {},
+                        },
+                        plugins: [],
+                        ...userConfig,
+                    }
+                },
+                theme(userConfig = {}) {
+                    return this.defaultTheme(userConfig)
+                },
+                defaultTheme(userConfig = {}) {
+                    return {
+                        extend: {
+                            colors: {
+                                purple: '#a855f7',
+                                blue: '#3b82f6'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Particles
+        function createParticles() {
+            const container = document.getElementById('particles')
+            for (let i = 0; i < 80; i++) {
+                const particle = document.createElement('div')
+                particle.className = 'particle'
+                particle.style.left = Math.random() * 100 + 'vw'
+                particle.style.animationDuration = (Math.random() * 12 + 8) + 's'
+                particle.style.opacity = Math.random() * 0.6 + 0.3
+                particle.style.width = particle.style.height = Math.random() * 5 + 3 + 'px'
+                container.appendChild(particle)
+                
+                // Remove after animation
+                setTimeout(() => {
+                    if (particle.parentNode) particle.parentNode.removeChild(particle)
+                }, 20000)
+            }
+        }
+        
+        // Initialize everything
+        window.onload = function() {
+            initializeTailwind()
+            createParticles()
+            
+            // Fake typing animation loop in hero chat
+            let chatIndex = 0
+            const messages = [
+                "কেমন আছো আজকে? 😊",
+                "Physics motion chapter বুঝিয়ে দাও",
+                "আজকের আবহাওয়া কেমন হবে?"
+            ]
+            
+            setInterval(() => {
+                const chatWindow = document.getElementById('chat-window')
+                if (!chatWindow) return
+                
+                const newMsg = document.createElement('div')
+                newMsg.className = 'chat-bubble max-w-[75%] bg-white/10 rounded-3xl rounded-tl-none px-5 py-3 self-start'
+                newMsg.textContent = messages[chatIndex % messages.length]
+                chatWindow.appendChild(newMsg)
+                chatWindow.scrollTop = chatWindow.scrollHeight
+                chatIndex++
+            }, 4500)
+            
+            console.log('%c✅ Bondhu AI website ready — Premium futuristic AI product launched', 'background:#a855f7;color:#fff;padding:4px 8px;border-radius:4px')
+        }
+    </script>
+</body>
+</html>
